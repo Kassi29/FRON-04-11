@@ -1,0 +1,22 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-position: center;
+    overflow: auto;
+}
+
+.ng-valid:not(form).ng-touched {
+    border-left: 5px solid #42A948 !important;
+  }
+  
+.ng-invalid:not(form).ng-touched {
+    border-left: 5px solid #a94442 !important;
+}
+
+.text-danger {
+    color: #a94442; 
+    font-size: 0.75rem; 
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+  }

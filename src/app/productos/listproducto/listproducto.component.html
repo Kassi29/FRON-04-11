@@ -1,0 +1,99 @@
+<div class="container">
+  <h2>Lista De Productos</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Categoría</th>
+        <th>Stock</th>
+        <th>Precio</th>
+        <th>Imagen</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let producto of productos; let i = index">
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.name }}</td>
+        <td>{{ producto.description}}</td>
+        <td>
+          <ng-container *ngIf="producto.categories.length; else noCategories">
+    <span *ngFor="let category of producto.categories">
+      {{ category.name }}<span *ngIf="!lastCategory(category)">, </span>
+    </span>
+          </ng-container>
+          <ng-template #noCategories>No hay categorías disponibles</ng-template>
+        </td>
+
+        <td>{{ producto.stock }}</td>
+        <td>{{ producto.price}}</td>
+        <td>
+          <img [src]="producto.imageUrl" alt="{{ producto.name }}" style="max-width: 70px; max-height: 70px;">
+          <div *ngIf="!producto.imageUrl">Sin imagen</div>
+        </td>
+
+
+
+
+
+        <td>
+          <button (click)="updatePro(producto)" class="btn edit-button" title="Editar">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button (click)="deletePro(producto)" class="btn delete-button" title="Eliminar">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="edit-form" *ngIf="productoSelected.id">
+    <h2>Editar Producto</h2>
+    <form (ngSubmit)="addProducto(productoSelected)" #categoryForm="ngForm">
+      <div>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" [(ngModel)]="productoSelected.name" name="name" required>
+      </div>
+      <div>
+        <label for="description">Descripción:</label>
+        <input type="text" id="description" [(ngModel)]="productoSelected.description" name="description" required>
+      </div>
+      <div>
+        <label for="stock">Stock:</label>
+        <input type="text" id="stock" [(ngModel)]="productoSelected.stock" name="stock" required>
+      </div>
+      <div>
+        <label for="precio">Precio:</label>
+        <input type="text" id="precio" [(ngModel)]="productoSelected.price" name="precio" required>
+      </div>
+      <div class="form-group">
+        <label for="imagen" class="custom-label">Seleccionar Nueva Imagen (JPG):</label>
+        <input type="file" id="imagen" (change)="onFileChange($event)" accept="image/jpeg" style="display: none;">
+        <label for="imagen" class="custom-file-upload">
+          <i class="fas fa-upload"></i> Elegir Archivo
+        </label>
+        <div *ngIf="imagenFile" class="image-preview-container">
+          <p class="file-info">Archivo seleccionado: {{ imagenFile.name }}</p>
+          <div class="image-preview">
+            <img *ngIf="previewUrl" [src]="previewUrl" alt="Vista previa" class="preview-img" />
+            <i class="fas fa-times-circle delete-icon" (click)="removeImage()"></i>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-actions">
+        <button type="submit">Guardar</button>
+        <button type="button" (click)="resetProductoSelection()">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+
+</div>
+

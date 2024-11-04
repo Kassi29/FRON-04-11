@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Estado de pedidos</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+      <tr>
+        <th>Nro Pedido</th>
+        <th>Total Envío</th>
+        <th>Estado</th>
+        <th>Delivery Email</th>
+        <th>Horario</th>
+        <th>Fecha Entrega</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let carrito of carritos">
+        <td>{{ carrito.id }}</td>
+        <td>{{ carrito.totalEnvio | currency }}</td>
+        <td>{{ carrito.estado }}</td>
+        <td>{{ carrito.deliveryEmail }}</td>
+        <td>{{ carrito.horario }}</td>
+        <td>{{ carrito.fechaEntrega }}</td>
+        <td>
+          <button class="btn delete-button" (click)="cambiarEstadoPedidoRecibido(carrito.id)"
+                  [disabled]="!isButtonEnabled(carrito)">
+            <i class="fas fa-check-circle"></i> Pedido Recibido
+          </button>
+          <span *ngIf="isButtonEnabled(carrito)" style="color: green;">¡Sirve!</span>
+        </td>
+
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

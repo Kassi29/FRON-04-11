@@ -1,0 +1,33 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h2>Iniciar Sesión</h2>
+  
+    <div class="mb-3">
+      <input formControlName="user" type="text" class="form-control" placeholder="Usuario">
+      <div *ngIf="user.invalid && (user.dirty || user.touched)" class="text-danger">
+        <div *ngIf="user.errors?.['required']">El usuario es requerido.</div>
+        <div *ngIf="user.errors?.['email']">El usuario debe ser una dirección de correo válida.</div>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <input formControlName="password" type="password" class="form-control" placeholder="Contraseña">
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+        <div *ngIf="password.errors?.['required']">La contraseña es requerida y no puede estar vacía.</div>
+      </div>
+    </div>
+  
+    <!-- Mostrar mensaje de error o éxito aquí -->
+    <div *ngIf="message" class="mb-3" [ngClass]="{'text-success': messageType === 'success', 'text-danger': messageType === 'error'}">
+      <p>{{ message }}</p>
+    </div>
+  
+    <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+  
+    <div class="mb-5">
+      <a href="/web/recover">¿Perdiste tu contraseña?</a>
+    </div>
+    <div class="mb-6">
+      <a routerLink="/web/register">¿Aún no tienes cuenta? Regístrate</a>
+    </div>
+  </form>
+  

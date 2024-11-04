@@ -1,0 +1,18 @@
+<header class="header">
+    <div class="logo">Mi Logo</div>
+    <nav class="navegacion">
+        <a routerLink="/web/inicio">Inicio</a>
+        <a href="#">Sobre Nosotros</a>
+        <a routerLink="/web/catalogo">Catalogo</a>
+
+
+        <a routerLink="/web/carrito" routerLinkActive="active">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">{{ totalProducts }}</span> <!-- Mostrar el total de productos -->
+        </a>
+
+
+        <a routerLink="/web/login">Iniciar Sesión</a>
+    </nav>
+</header>
+

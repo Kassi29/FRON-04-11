@@ -1,0 +1,55 @@
+.plano {
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.panel {
+    width: 20%; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+.principal {
+    width: 80%; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    margin-left: 10px;
+    margin-right: 10px;
+    position: relative; /* Necesario para alinear el botón */
+}
+
+.logout-button {
+    position: absolute; /* Alinea el botón en relación al contenedor */
+    right: 10px; /* Margen desde la derecha */
+    top: 10px; /* Margen desde la parte superior */
+}
+
+.logout-button a {
+    display: flex;
+    align-items: center; /* Centra verticalmente el ícono y el texto */
+    font-size: 18px; /* Tamaño del texto */
+    color: #ffffff; /* Color del texto */
+    background-color: #053c73; /* Fondo del botón */
+    padding: 10px 15px; /* Espaciado interno */
+    border: none; /* Sin borde */
+    border-radius: 8px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+.logout-button a:hover {
+    background-color: #1a5f9e; /* Color de fondo al pasar el ratón */
+}
+
+.logout-button a i {
+    margin-right: 8px; /* Espaciado entre el ícono y el texto */
+    color: #ffffff; /* Color del ícono */
+}
+
+.logout-button a:hover i {
+    color: #ffffff; /* Color del ícono al pasar el ratón */
+}

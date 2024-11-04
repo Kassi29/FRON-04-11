@@ -1,0 +1,98 @@
+<div class="payment-container">
+  <h2>Proceso de Compra</h2>
+
+  <form [formGroup]="registerForm"> <!-- Aquí está el formGroup para todo el formulario -->
+    <div class="billing-info">
+      <h4>Datos de Facturación</h4>
+      <input type="text" placeholder="Nombre" formControlName="nombre" required />
+      <input type="text" placeholder="NIT/CI" formControlName="nit" required />
+    </div>
+
+    <div *ngIf="qrCodeUrl">
+      <h4>Código QR</h4>
+      <img [src]="qrCodeUrl" alt="Código QR" />
+    </div>
+
+    <div class="total-display">
+      <h4>Total a Pagar</h4>
+      <p>{{ cartService.getTotalCost() | currency }}</p>
+    </div>
+
+    <button (click)="toggleDeliveryOptions()" class="process-button">Continuar</button>
+
+    <div *ngIf="showDeliveryOptions">
+      <h4>Datos de entrega</h4>
+
+      <div class="delivery-options">
+        <label>
+          <input type="radio" name="deliveryOption" value="delivery" (change)="onDeliveryOptionChange($event)" checked />
+          Envío a Domicilio
+        </label>
+      </div>
+
+      <p>La entrega se realizará en un tiempo estimado máximo de 2 días a partir de hoy.</p>
+
+      <div class="form-group">
+        <label for="horario">Horario de Entrega:</label>
+        <select id="horario" formControlName="horario" required>
+          <option value="" disabled selected>Selecciona un horario</option>
+          <option value="rango(10:00 - 12:00) ">Mañana de 10:00 a 12:00</option>
+          <option value="rango(14:00 - 16:00)">Tarde de 14:00 a 16:00</option>
+          <option value="rango(18:00 - 20:00)">Tarde de 18:00 a 20:00</option>
+        </select>
+        <div *ngIf="registerForm.get('horario')?.invalid && registerForm.get('horario')?.touched" class="error-message">
+          El horario de entrega es obligatorio.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="departamento">Departamento:</label>
+        <select id="departamento" formControlName="departamento" (change)="onDepartamentoChange($event)">
+          <option value="" disabled selected>Selecciona un departamento</option>
+          <option *ngFor="let departamento of departamentos" [value]="departamento.name">{{ departamento.name }}</option>
+        </select>
+      </div>
+
+      <div style="height: 350px;">
+        <app-map (locationSelected)="onLocationSelected($event.lat, $event.lng)" [center]="mapCenter"></app-map>
+      </div>
+
+      <p>Latitud actual: {{ registerForm.get('latitud')?.value }}</p>
+      <p>Longitud actual: {{ registerForm.get('longitud')?.value }}</p>
+
+      <div class="form-group">
+        <label for="empresa">Empresa:</label>
+        <select id="empresa" formControlName="empresa" (change)="onEmpresaChange($event)" required>
+          <option value="" disabled selected>Seleccione una empresa</option>
+          <option *ngFor="let empresa of empresas" [value]="empresa.id">{{empresa.name}}</option>
+        </select>
+        <div *ngIf="registerForm.get('empresa')?.invalid && registerForm.get('empresa')?.touched" class="error-message">
+          La empresa es obligatoria.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="delivery">Delivery:</label>
+        <select id="delivery" formControlName="delivery" (change)="onDeliveryChange($event)" required>
+          <option value="" disabled selected>🏠 Seleccione un delivery</option>
+          <option *ngFor="let delivery of deliveries" [value]="delivery.id">
+            {{ delivery.email }}
+          </option>
+        </select>
+        <div *ngIf="registerForm.get('delivery')?.invalid && registerForm.get('delivery')?.touched" class="error-message">
+          El delivery es obligatorio.
+        </div>
+      </div>
+
+
+
+
+      <button (click)="processPurchase()" class="process-button">Finalizar</button>
+      <p class="thank-you-message">Gracias por su preferencia.</p>
+    </div>
+
+  </form>
+
+
+</div>
+

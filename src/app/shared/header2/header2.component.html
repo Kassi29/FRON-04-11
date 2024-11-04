@@ -1,0 +1,24 @@
+<header class="header">
+    <div class="logo">Mi Logo</div>
+    <nav class="navegacion">
+        <a routerLink="/web2/inicio">Inicio</a>
+        <a routerLink="/web2/catalogo">Catalogo</a>
+
+        <a routerLink="/web2/pedidos" routerLinkActive="active">
+            <i class="fas fa-box"></i> Pedidos
+        </a>
+
+        <a routerLink="/web2/passw" routerLinkActive="active">
+            <i class="fas fa-lock"></i> Cambiar Contraseña
+        </a>
+
+        <a routerLink="/web2/carrito" routerLinkActive="active">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">{{ totalProducts }}</span> <!-- Mostrar el total de productos -->
+        </a>
+
+        <a routerLink="/web/inicio" class="cerrar-sesion">
+            <i class="fas fa-sign-out-alt"></i>
+        </a>
+    </nav>
+</header>

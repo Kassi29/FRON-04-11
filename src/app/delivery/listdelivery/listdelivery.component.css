@@ -1,0 +1,99 @@
+.container {
+    max-width: 100%;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #053c73;
+  }
+  
+  .table-container {
+    margin-top: 5px; /* Espacio superior para la tabla */
+  }
+  
+  .table-responsive {
+    overflow-x: auto; /* Habilita el desplazamiento horizontal */
+    min-width: 800px; /* Ajusta este valor según sea necesario */
+  }
+  
+  table {
+    width: 100%; /* Asegura que la tabla use todo el ancho del contenedor */
+    border-collapse: collapse; /* Mejora la presentación de la tabla */
+    margin: 20px 0; /* Espacio superior e inferior */
+  }
+  
+  th, td {
+    padding: 12px; /* Espacio dentro de las celdas */
+    text-align: center; /* Alineación del texto */
+    border: 1px solid #ddd; /* Bordes en las celdas */
+  }
+  
+  th {
+    background-color: #053c73; /* Color de fondo para el encabezado */
+    color: white; /* Color de texto para el encabezado */
+  }
+  
+  tbody tr:hover {
+    background-color: #f9f9f9; /* Color de fondo al pasar el mouse */
+  }
+
+.actions {
+    display: flex;
+    justify-content: center; /* Centra los botones */
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 5px; /* Espacio entre botones */
+}
+
+.edit-button {
+    background-color: #4197dd;
+    color: white;
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color:  #0c5c9d;
+}
+
+.delete-button:hover {
+    background-color: #da190b;
+}
+
+.edit-form {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .edit-form h3 {
+    margin: 0 0 10px;
+  }
+  
+  .edit-form label {
+    display: block;
+    margin: 5px 0;
+  }
+  
+  .edit-form input {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 8px;
+  }
+  
+  .edit-form button {
+    margin-right: 10px;
+  }
+  

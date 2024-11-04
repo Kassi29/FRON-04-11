@@ -1,0 +1,99 @@
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h2 class="text-center">Registrar Producto</h2>
+
+    <div class="form-group">
+      <input type="text" id="name" formControlName="name" class="form-control" placeholder="Nombre del producto" required>
+      <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="error-message">
+        El nombre es obligatorio.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" id="descripcion" formControlName="descripcion" class="form-control" placeholder="Descripcion del producto" required>
+      <div *ngIf="registerForm.get('descripcion')?.invalid && registerForm.get('descripcion')?.touched" class="error-message">
+        La descripción es obligatoria.
+      </div>
+    </div>
+
+    <select id="categoria" formControlName="categoria" (change)="onCategoryChange($event)" required>
+      <option value="" disabled selected>Seleccione una categoría</option>
+      <option *ngFor="let category of categorias" [value]="category.id">{{ category.name }}</option>
+    </select>
+
+
+    <div class="selected-categories">
+      <h4 class="titulo">Categorías Seleccionadas:</h4>
+      <ul class="lista-categorias">
+        <li *ngFor="let cat of selectedCategorias" class="categoria-item">
+          <span class="nombre-categoria">{{ cat.name }}</span>
+          <i class="fa fa-trash btn-eliminar" (click)="removeCategory(cat)" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </div>
+
+    <div class="form-group">
+      <select id="almacen" formControlName="almacen" (change)="onAlmacenChange($event)" required>
+        <option value="" disabled selected>Seleccione un almacen</option>
+        <option *ngFor="let almacen of almacenes" [value]="almacen.id">{{ almacen.name }}</option>
+      </select>
+      <div *ngIf="registerForm.get('almacen')?.invalid && registerForm.get('almacen')?.touched" class="error-message">
+        El almacén es obligatorio.
+      </div>
+    </div>
+
+    <div class="selected-almacen">
+      <h4 class="titulo">Almacenes Seleccionados:</h4>
+      <ul class="lista-almacen">
+        <li *ngFor="let alm of selectedAlmacen" class="almacen-item">
+          <span class="nombre-almacen">{{ alm.name }}</span>
+          <i class="fa fa-trash btn-eliminar" (click)="removeAlmacen(alm)" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </div>
+
+    <div class="form-group">
+      <label for="stock">Stock:</label>
+      <input type="number" id="stock" formControlName="stock" class="form-control" placeholder="Ingrese la cantidad" required>
+      <div *ngIf="registerForm.get('stock')?.hasError('notANumber') && registerForm.get('stock')?.touched" class="error-message">
+        El stock debe ser un número.
+      </div>
+      <div *ngIf="registerForm.get('stock')?.hasError('negative') && registerForm.get('stock')?.touched" class="error-message">
+        El stock debe ser un número mayor a 0.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="precio">Precio:</label>
+      <input type="number" id="precio" formControlName="precio" class="form-control" placeholder="Ingrese el precio" required>
+      <div *ngIf="registerForm.get('precio')?.hasError('notANumber') && registerForm.get('precio')?.touched" class="error-message">
+        El precio debe ser un número.
+      </div>
+      <div *ngIf="registerForm.get('precio')?.hasError('negative') && registerForm.get('precio')?.touched" class="error-message">
+        El precio debe ser un número mayor a 0.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="imagen" class="custom-label">Seleccionar Imagen (JPG):</label>
+      <input type="file" id="imagen" (change)="onFileChange($event)" accept="image/jpeg" required style="display: none;">
+      <label for="imagen" class="custom-file-upload">
+        <i class="fas fa-upload"></i> Elegir Archivo
+      </label>
+      <div *ngIf="registerForm.get('imagenUrl')?.hasError('required') && (imagenFile === null || registerForm.get('imagenUrl')?.touched)" class="error-message">
+        Debes agregar una imagen.
+      </div>
+      <div *ngIf="imagenFile" class="image-preview-container">
+        <p class="file-info">Archivo seleccionado: {{ imagenFile.name }}</p>
+        <div class="image-preview">
+          <img *ngIf="previewUrl" [src]="previewUrl" alt="Vista previa" class="preview-img" />
+          <i class="fas fa-times-circle delete-icon" (click)="removeImage()"></i>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar</button>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  </form>
+</div>

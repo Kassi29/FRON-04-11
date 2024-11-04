@@ -1,0 +1,46 @@
+<div class="container">
+  <h2 class="cart-title">Mis Compras</h2>
+
+  <div *ngIf="productocarrito.length > 0" class="cart-container">
+    <div *ngFor="let producto of productocarrito; let i = index" class="cart-item">
+      <div class="item-image">
+        <img *ngIf="producto.producto.imageUrl"
+             [src]="producto.producto.imageUrl"
+             alt="{{ producto.producto.name }}"
+             class="product-image"
+             style="width: 100px; height: auto;" />
+        <div *ngIf="!producto.producto.imageUrl">Sin imagen</div>
+      </div>
+      <div class="item-details">
+        <h3>{{ producto.producto.name }}</h3>
+        <p>{{ producto.producto.description }}</p>
+        <p>Precio: {{ producto.producto.price | currency }}</p>
+
+        <div class="quantity-section">
+          <label class="quantity-label">Cantidad:</label>
+          <button class="quantity-button" (click)="updateQuantity(producto, producto.cantidad - 1)" [disabled]="producto.cantidad <= 1">-</button>
+          <input type="number" [(ngModel)]="producto.cantidad"
+                 [min]="1" [max]="producto.producto.stock"
+                 (ngModelChange)="updateQuantity(producto, $event)" /> <!-- Asegúrate de usar ngModelChange -->
+          <button class="quantity-button" (click)="updateQuantity(producto, producto.cantidad + 1)" [disabled]="producto.cantidad >= producto.producto.stock">+</button>
+        </div>
+
+
+      </div>
+      <button (click)="deleteProduct(producto.producto)" class="delete-button">Eliminar</button>
+    </div>
+
+    <div class="total-section">
+      <div *ngIf="totalCost !== null" class="total-display">
+        <p>Total a pagar: {{ totalCost | currency }}</p>
+        <p>Total de productos: {{ totalProducts }}</p> <!-- Muestra el total de productos -->
+      </div>
+    </div>
+
+    <button (click)="onCheckout()" class="checkout-button">Comprar</button>
+  </div>
+
+  <div *ngIf="productocarrito.length === 0" class="empty-cart-message">
+    <p>No tienes ningún elemento en tu carrito!</p>
+  </div>
+</div>

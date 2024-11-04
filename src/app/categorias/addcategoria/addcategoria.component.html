@@ -1,0 +1,16 @@
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h2>Registrar Categoria</h2>
+    <div class="form-group">
+      <input type="text" id="name" formControlName="name" required placeholder="Nombre">
+    </div>
+
+    <div class="form-group">
+      <input type="text" id="description" formControlName="description" required placeholder="Descripción">
+    </div>
+
+    <button type="submit">Registrar</button>
+
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  </form>
+</div>

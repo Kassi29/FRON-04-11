@@ -1,0 +1,50 @@
+<div class="container">
+  <h2>Estado de pedidos</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+      <tr>
+        <th>Nro Pedido</th>
+        <th>Total Envío</th>
+        <th>Delivery Email</th>
+        <th>Latitud</th>
+        <th>Longitud</th>
+        <th>Horario</th>
+        <th>Fecha Entrega</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let carrito of carritos">
+        <td>{{ carrito.id }}</td>
+        <td>{{ carrito.totalEnvio | currency }}</td>
+
+        <td>{{ carrito.deliveryEmail }}</td>
+        <td>{{carrito.latitud}}</td>
+        <td>{{carrito.longitud}}</td>
+        <td>{{ carrito.horario }}</td>
+        <td>{{ carrito.fechaEntrega }}</td>
+        <td>{{ carrito.estado }}</td>
+        <td>
+          <button *ngIf="carrito.estado === 'En almacen'" class="btn btn-primary" (click)="cambiarEstadoRecogiendoAlmacen(carrito)">
+            <i class="fas fa-box"></i> Recogiendo de Almacén
+          </button>
+          <button *ngIf="carrito.estado === 'Recogiendo Almacen'" class="btn btn-warning" (click)="cambiarEstadoEnCamino(carrito)">
+            <i class="fas fa-truck"></i> En Camino
+          </button>
+          <button *ngIf="carrito.estado === 'En Camino'" class="btn btn-success" (click)="cambiarEstadoEnPuerta(carrito)">
+            <i class="fas fa-check-circle"></i> En Puerta
+          </button>
+          <button *ngIf="carrito.estado === 'En Puerta'" class="btn btn-danger" (click)="cambiarEstadoNoEntregado(carrito)">
+            <i class="fas fa-times-circle"></i> No Entregado
+          </button>
+        </td>
+
+
+
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

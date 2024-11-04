@@ -1,0 +1,67 @@
+<div class="container">
+  <h2 *ngIf="!isCreatingArtesano">Lista De Artesanos</h2>
+
+  <div *ngIf="!isCreatingArtesano">
+    <div class="table-container">
+      <table>
+        <thead>
+        <tr>
+          <th>id</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Email</th>
+          <th>Comunidad</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let artesano of artesanos; let i = index">
+          <td>{{artesano.sellerRoleId}}</td>
+          <td>{{ artesano.user ? artesano.user.name : 'Sin nombre' }}</td>
+          <td>{{ artesano.user ? artesano.user.lastname : 'Sin apellido' }}</td>
+          <td>{{ artesano.user ? artesano.user.email : 'Sin Email' }}</td>
+          <td>{{ getComunidadName(artesano.comunidad) }}</td>
+
+          <td>
+            <button (click)="editArtesano(artesano)" class="btn edit-button" title="Editar">
+              <i class="fas fa-edit"></i>
+            </button>
+            <button (click)="deleteArtesano(artesano)" class="btn delete-button" title="Eliminar">
+              <i class="fas fa-trash-alt"></i>
+            </button>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="artesanos.length === 0" class="no-deliveries">
+      <p>No hay artesanos disponibles.</p>
+    </div>
+
+    <!-- Formulario para editar comunidad (visible solo en modo de edición) -->
+    <div *ngIf="isEditMode" class="form-container">
+      <h2>Editar Comunidad</h2>
+      <form [formGroup]="editForm" (ngSubmit)="updateComunidad()">
+        <div class="form-group">
+          <select formControlName="comunidad" required>
+            <option value="" disabled>Selecciona una comunidad</option>
+            <option *ngFor="let com of comunidades" [value]="com.id">{{ com.name }}</option>
+          </select>
+
+          <div *ngIf="editForm.get('comunidad')?.invalid && (editForm.get('comunidad')?.dirty || editForm.get('comunidad')?.touched)" class="text-danger">
+            <div *ngIf="editForm.get('comunidad')?.errors?.['required']">
+              Por favor, selecciona una comunidad.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn">Actualizar Comunidad</button>
+          <button type="button" class="btn" (click)="isEditMode = false; editForm.reset()">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

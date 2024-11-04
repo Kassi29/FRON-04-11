@@ -1,0 +1,58 @@
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h2>Registrar Almacén</h2>
+
+    <div class="form-group">
+      <input type="text" formControlName="name" required placeholder="Nombre">
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="ubicacion" required placeholder="Ubicación">
+    </div>
+
+    <div class="form-group">
+      <select formControlName="departamento" (change)="onDepartamentoChange($event)">
+        <option value="" disabled selected>Selecciona un departamento</option>
+        <option *ngFor="let departamento of departamentos" [value]="departamento.name">{{ departamento.name }}</option>
+      </select>
+    </div>
+
+    <div style="height: 350px;">
+      <app-map (locationSelected)="onLocationSelected($event.lat, $event.lng)" [center]="mapCenter"></app-map>
+    </div>
+
+    <div class="form-group">
+      <label style="margin-right: 10px;">Latitud</label>
+      <input type="text" formControlName="latitud" required placeholder="Latitud" readonly style="margin-right: 20px;">
+      <label style="margin-right: 10px;">Longitud</label>
+      <input type="text" formControlName="longitud" required placeholder="Longitud" readonly>
+    </div>
+    <div class="form-group">
+      <select id="empresa" formControlName="empresa" (change)="onEmpresaChange($event)" required>
+        <option value="" disabled selected>Seleccione una empresa</option>
+        <option *ngFor="let empresa of empresas" [value]="empresa.id">{{empresa.name}}</option>
+      </select>
+      <div *ngIf="registerForm.get('empresa')?.invalid && registerForm.get('empresa')?.touched" class="error-message">
+        La empresa es obligatoria.
+      </div>
+    </div>
+
+    <div class="selected-almacen">
+      <h4 class="titulo">Empresas Seleccionadas:</h4>
+      <ul class="lista-almacen">
+        <li *ngFor="let emp of selectedEmpresa" class="almacen-item">
+          <span class="nombre-almacen">{{ emp.name }}</span>
+          <i class="fa fa-trash btn-eliminar" (click)="removeEmpresa(emp)" aria-hidden="true"></i>
+        </li>
+      </ul>
+    </div>
+
+
+
+    <button type="submit">Registrar</button>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </form>
+</div>

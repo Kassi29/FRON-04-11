@@ -1,0 +1,29 @@
+<div class="todo">
+    <div class="container">
+        <h1>Panel Informativo</h1>
+        <h1>A R T E S A N O</h1>
+        <div class="welcome-icon">
+            <i class="fas fa-user"></i>
+        </div>
+        <h2> Bienvenido/a </h2>
+        <h2 *ngIf="email"> {{ email }}</h2>
+        <hr class="title-divider" />
+
+        <nav class="navegacion">
+            <a routerLink="/artesano/passw" routerLinkActive="active">
+                <i class="fas fa-lock"></i> Cambiar Contraseña
+            </a>
+            <a routerLink="/artesano/registerpro" routerLinkActive="active">
+                <i class="fas fa-users"></i> Agregar
+            </a>
+            <a routerLink="/artesano/listpro" routerLinkActive="active">
+                <i class="fas fa-file-alt"></i> Productos
+            </a>
+            <a routerLink="/web/inicio" routerLinkActive="active">
+                <i class="fas fa-sign-out"></i> Cerrar Sesión
+            </a>
+        </nav>
+    </div>
+</div>
+
+

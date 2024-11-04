@@ -1,0 +1,111 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #053c73;
+    padding: 20px 80px;
+    height: 70px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.logo:hover {
+    color: #ffc107;
+}
+
+.navegacion {
+    display: flex;
+    gap: 30px; /* Espacio entre los elementos de navegación */
+}
+
+.navegacion a {
+    position: relative;
+    font-size: 16px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.navegacion a:hover {
+    color: #ffc107;
+    transform: translateY(-2px);
+}
+
+.navegacion a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    bottom: -6px;
+    left: 0;
+    height: 2px;
+    background: #ffffff;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s;
+}
+
+.navegacion a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 40px;
+    }
+    .logo {
+        font-size: 22px;
+    }
+    .navegacion {
+        gap: 20px;
+    }
+    .navegacion a {
+        font-size: 14px;
+    }
+}
+
+
+
+.cart-link {
+    position: relative; /* Necesario para el posicionamiento del contador */
+    display: inline-flex; /* Alinear ícono y contador en línea */
+    align-items: center; /* Centrar verticalmente */
+    text-decoration: none; /* Sin subrayado */
+    color: inherit; /* Heredar color del texto */
+}
+
+.cart-link i {
+    font-size: 24px; /* Tamaño del ícono */
+    margin-right: 8px; /* Espaciado entre el ícono y el contador */
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px; /* Ajustar la posición vertical */
+    right: -10px; /* Ajustar la posición horizontal */
+    background-color: red; /* Color de fondo del contador */
+    color: white; /* Color del texto */
+    border-radius: 50%; /* Redondear el contador */
+    width: 20px; /* Ancho del contador */
+    height: 20px; /* Alto del contador */
+    display: flex; /* Flexbox para centrar el texto */
+    align-items: center; /* Centrar verticalmente el texto */
+    justify-content: center; /* Centrar horizontalmente el texto */
+    font-size: 12px; /* Tamaño de fuente del contador */
+    font-weight: bold; /* Negrita para mayor visibilidad */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
+}

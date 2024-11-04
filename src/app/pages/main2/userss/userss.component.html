@@ -1,0 +1,76 @@
+<div class="container">
+  <h2 *ngIf="!isCreatingUser">Lista De Usuarios</h2>
+
+  <div *ngIf="!isCreatingUser">
+    <div class="table-container">
+      <div class="table-responsive">
+        <table >
+          <thead>
+          <tr>
+            <th>Name</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Enabled</th>
+            <th>Roles</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let user of usuarios; let i = index">
+            <td>{{ user.name }}</td>
+            <td>{{ user.lastname }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.enabled ? 'Yes' : 'No' }}</td>
+            <td>
+              <ul *ngIf="user.roles.length > 0">
+                <li *ngFor="let role of user.roles">{{ role.name }}</li>
+              </ul>
+              <span *ngIf="user.roles.length === 0">No roles</span>
+            </td>
+            <td >
+              <button (click)="edit(user)" class="btn edit-button">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button (click)="delete(user)" class="btn delete-button">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="usuarios.length === 0" class="no-users">
+        <p>No hay usuarios disponibles.</p>
+      </div>
+    </div>
+  </div>
+
+<!-- editar -->
+<div class="edit-form" *ngIf="usuarioSelected.id">
+  <h2>Editar Usuario</h2>
+  <form (ngSubmit)="addUsuario(usuarioSelected)" #userForm="ngForm">
+    <div>
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" [(ngModel)]="usuarioSelected.name" name="name" required>
+    </div>
+    <div>
+      <label for="lastname">Apellido:</label>
+      <input type="text" id="lastname" [(ngModel)]="usuarioSelected.lastname" name="lastname" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="usuarioSelected.email" name="email" required>
+    </div>
+    <div class="form-actions">
+      <button type="submit" class="btn btn-save" [disabled]="!userForm.valid">Guardar</button>
+      <button type="button" class="btn btn-cancel" (click)="resetUsuarioSelection()">Cancelar</button>
+    </div>
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+  </form>
+</div>
+
+</div>
+
+

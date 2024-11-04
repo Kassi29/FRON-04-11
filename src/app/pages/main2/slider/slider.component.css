@@ -1,0 +1,127 @@
+.todo {
+    background-color: #053c73;
+    padding: 30px;
+    border-radius: 5px;
+    max-width: 650px;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.welcome-icon {
+    font-size: 60px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.title-divider {
+    width: 100%;
+    max-width: 300px;
+    border: 0;
+    border-top: 3px solid #ffffff;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 10px;
+    margin-top: 0.5px;
+}
+
+.navegacion {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.navegacion a {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #ffffff; /* Color de texto inicial */
+    text-decoration: none;
+    padding: 12px 20px;
+    border: 1px solid transparent; /* Borde transparente */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo transparente */
+    box-shadow: none;
+}
+
+.navegacion a i {
+    margin-right: 10px;
+    font-size: 22px;
+}
+
+.navegacion a:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Color de fondo al pasar el ratón */
+    color: #ffffff; /* Color de texto al pasar el ratón */
+    border-color: #ffffff; /* Borde blanco al pasar el ratón */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+.navegacion a.active {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo activo */
+    color: #ffffff;
+    border-color: #ffffff; /* Borde blanco para el estado activo */
+}
+
+@media (max-width: 768px) {
+    .todo {
+        flex-direction: column; /* Cambia a columna en pantallas más pequeñas */
+    }
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    left: 100%; /* Mueve el menú a la derecha del elemento contenedor */
+    top: 0; /* Alinea el menú con la parte superior del elemento contenedor */
+    background-color: #053c73; /* Color de fondo del menú */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+    z-index: 1000;
+    min-width: 160px; /* Ajusta según sea necesario */
+    padding: 5px 0; /* Espaciado interior del menú */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Transición suave */
+    opacity: 0; /* Ocultar inicialmente */
+    visibility: hidden; /* Ocultar inicialmente */
+    padding: 3px 6px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1; /* Mostrar el menú con opacidad */
+    visibility: visible; /* Hacer visible el menú */
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 20px; /* Mayor área de clic */
+    color: #ffffff; /* Color de texto del menú */
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición para color */
+    margin: 5px 0; /* Añade margen vertical para separar los elementos */
+    border-radius: 6px; /* Bordes redondeados para los enlaces del menú */
+}
+
+.dropdown-menu a:hover {
+    background-color: #053c73; /* Color de fondo al pasar el ratón */
+    color: #ffffff; /* Color de texto al pasar el ratón */
+}

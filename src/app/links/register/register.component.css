@@ -1,0 +1,150 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+form {
+  display: block;
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  font-family:'Times New Roman', Times, serif; /* Cambia 'Arial' a la fuente que prefieras */
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  text-align: center;
+  color: #053c73;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 15px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+  border-color: #053c73;
+  box-shadow: 0 0 8px rgba(5, 60, 115, 0.2);
+  outline: none;
+}
+
+select {
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.btn {
+  background: #053c73;
+  padding: 14px;
+  border-radius: 6px;
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: block;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #366696;
+}
+
+.btn:focus {
+  outline: 3px solid #366696;
+  outline-offset: 3px;
+}
+
+.text-danger {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.opciones-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.opcion-caja {
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  cursor: pointer;  
+}
+
+.opcion-caja input[type="checkbox"] {
+  margin-right: 12px;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  accent-color:  #053c73; /* Para cambiar el color del checkbox en navegadores modernos */
+}
+
+.opcion-caja input[type="checkbox"]:checked + .opcion-text {
+  font-weight: 700;
+  color:  #053c73;
+  text-decoration: none;
+}
+
+.opcion-text {
+  font-size: 15px;
+  color:  #053c73;
+  transition: color 0.3s, font-weight 0.3s, text-decoration 0.3s;
+}
+
+
+.password-container {
+  position: relative;
+}
+
+.password-container input[type="password"],
+.password-container input[type="text"] {
+  width: 100%;
+  padding-right: 40px; /* Espacio para el botón */
+}
+
+.eye-button {
+  position: absolute;
+  right: 10px; /* Ajusta según tu diseño */
+  top: 50%; /* Centrar verticalmente */
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #053c73; /* Color del icono */
+  font-size: 20px; /* Tamaño del icono */
+  outline: none; /* Sin contorno al hacer foco */
+  z-index: 1; /* Asegúrate de que esté en la parte superior */
+}
+

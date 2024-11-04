@@ -1,0 +1,20 @@
+.plano {
+    display: flex;
+    align-items: stretch; /* Cambia a 'stretch' para igualar la altura de los hijos */
+    height: 100%;
+}
+
+.panel {
+    width: 20%; /* Ajusta el tamaño según sea necesario */
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    flex-grow: 1; /* Permite que todos los paneles crezcan uniformemente */
+}
+
+.principal {
+    width: 80%; /* Ajusta el tamaño según sea necesario */
+    position: relative; /* Necesario para alinear el botón */
+    background-color: #f5f6fda9;
+    flex-grow: 1; /* Permite que el panel principal crezca uniformemente */
+}

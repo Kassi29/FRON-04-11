@@ -1,0 +1,216 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+form {
+  margin-top: 0px;
+  padding: 30px;
+  background: #f5f6fda9;
+  border-radius: 10px;
+  width: 350px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  text-align: center;
+  color: #053c73;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  background: #f5f6fda9;
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px; /* Mantiene el margen existente */
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+  border-color: #053c73;
+  box-shadow: 0 0 8px rgba(5, 60, 115, 0.2);
+  outline: none;
+}
+
+button {
+  background: #053c73;
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: block;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 10px; /* Añadido para uniformidad con otros elementos */
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+button:focus {
+  outline: 2px solid #366696;
+  outline-offset: 2px;
+}
+
+.error-message {
+  color: red;
+  margin: 5px 0px;
+  margin-bottom: 15px;
+  font-size: 10px;
+}
+
+.form-group {
+  margin: 10px 0; /* Uniformiza el espaciado entre grupos de formulario */
+}
+
+label {
+  display: block;
+  font-weight: normal;
+  letter-spacing: 1px;
+  font-size: 14px;
+  margin-bottom: 5px; /* Espaciado entre la etiqueta y el input */
+}
+
+input[type="file"] {
+  display: none; /* Ocultar el input original */
+}
+
+.custom-file-upload {
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: #053c73;
+  color: white;
+  border-radius: 5px;
+  margin-top: 10px; /* Añadido para uniformidad */
+}
+
+.custom-file-upload:hover {
+  background-color: #0056b3;
+}
+
+.image-preview-container {
+  position: relative;
+  margin-top: 10px;
+}
+
+.image-preview {
+  display: inline-block;
+  position: relative;
+}
+
+.delete-icon {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: red;
+  cursor: pointer;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.delete-icon:hover {
+  color: darkred; /* Cambia el color al pasar el ratón */
+}
+
+.preview-img {
+  margin-top: 10px;
+  max-width: 100%; /* Ajusta el tamaño de la imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.selected-categories,
+.selected-almacen {
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f5f6fda9;
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
+.titulo {
+  font-size: 0.8em;
+  margin-bottom: 0.5em;
+  margin-top: 0px;
+}
+
+.lista-categorias,
+.lista-almacen {
+  list-style-type: none;
+  padding: 0;
+}
+
+.categoria-item,
+.almacen-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em 0;
+  border-bottom: 1px solid #eee;
+}
+
+.nombre-categoria,
+.nombre-almacen {
+  font-size: 1em;
+}
+
+.btn-eliminar {
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: color 0.3s;
+}
+
+.btn-eliminar:hover {
+  color: #c0392b;
+}
+
+.custom-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.image-preview-container {
+  margin-top: 10px;
+  border: 1px dashed #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color:#f5f6fda9;
+}
+
+.file-info {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.preview-img {
+  max-width: 100%; /* Ajusta el tamaño de la imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}

@@ -1,0 +1,115 @@
+<div class="container">
+  <h2 class="catalog-title">CATÁLOGO DE PRODUCTOS</h2>
+<!--
+  <hr class="title-divider" />
+  <div class="button-container">
+    <button class="button" (click)="showAllProducts()">
+      <i class="fas fa-th-list"></i> Mostrar Todos los Productos
+    </button>
+    <button class="button" (click)="irAlCarrito()">
+      <i class="fas fa-shopping-cart"></i> Ir al Carrito
+    </button>
+  </div>
+-->
+  <hr class="title-divider" />
+  <h2> F I L T R O S</h2>
+
+  <div class="todo">
+    <div class="filters">
+      <div class="category-dropdown">
+        <h3>Selecciona una Categoría</h3>
+        <ul>
+          <li *ngFor="let categoria of categorias">
+            <input type="checkbox"
+                  [checked]="selectedCategories.includes(categoria.id)"
+                  (change)="onCategoryChange(categoria.id)" />
+            {{ categoria.name }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="divider"></div> <!-- Divisor vertical aquí -->
+
+      <div class="sellers-dropdown">
+        <h3>Selecciona un Artesano</h3>
+        <ul>
+          <li *ngFor="let seller of sellers" (click)="onSellerChange(seller)">
+            <input type="checkbox" [checked]="selectedSellers.includes(seller)" /> {{ seller.email }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="divider"></div> <!-- Otro divisor vertical aquí -->
+
+      <div class="btn">
+        <button class="icon-button" (click)="clearFilters()">
+          <i class="fas fa-broom"></i>
+        </button>
+    </div>
+    </div>
+  </div>
+
+
+
+  <hr class="title-divider" />
+
+    <div class="catalog-container">
+    <div *ngIf="filteredProductos.length === 0" class="no-products-message">
+      <p>No se encontraron productos que coincidan con los filtros seleccionados.</p>
+    </div>
+
+
+    <div class="catalog-container">
+      <div class="product-card" *ngFor="let producto of filteredProductos">
+        <img (click)="openModal(producto)" [src]="producto.imageUrl" alt="{{ producto.name }}" class="product-image" />
+        <div class="product-info">
+          <h3 class="product-title">{{ producto.name }}</h3>
+          <p class="product-price">${{ producto.price }}</p>
+        </div>
+        <i (click)="openModal(producto)"  class="fas fa-eye view-icon"></i>
+      </div>
+    </div>
+
+
+
+  <!-- Modal -->
+  <div class="modal" *ngIf="isModalOpen">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <div class="product-details">
+        <div class="image-column">
+          <img [src]="productoSelected.imageUrl" alt="{{ productoSelected.name }}" class="product-image"/>
+        </div>
+        <div class="info-column">
+          <h2>{{ productoSelected.name }}</h2>
+          <p><strong>Descripción:</strong> {{ productoSelected.description }}</p>
+          <p><strong>Categorías:</strong>
+            <span *ngFor="let category of productoSelected.categories">
+              {{ category.name }}<span *ngIf="!lastCategory(category)">, </span>
+            </span>
+          </p>
+          <p><strong>Stock:</strong> {{ productoSelected.stock }}</p>
+          <p><strong>Precio:</strong> ${{ productoSelected.price }}</p>
+          <p><strong>Vendedor:</strong> {{ productoSelected.sellerEmail }}</p>
+          <div class="quantity-selector">
+            <input
+              type="number"
+              [(ngModel)]="selectedQuantity"
+              min="1"
+              max="{{ productoSelected.stock }}"
+              class="quantity-input"
+              placeholder="Cantidad"
+            />
+            <button
+              (click)="agregarAlCarrito(productoSelected, selectedQuantity)"
+              class="add-to-cart-button">
+              Agregar al carrito
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>

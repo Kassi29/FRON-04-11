@@ -1,0 +1,73 @@
+<div class="container">
+  <h2>Lista De Almacenes</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Ubicacion</th>
+        <th>Latitud</th>
+        <th>Longitud</th>
+        <th>Departamento</th>
+        <th>Empresa</th> <!-- Nueva columna para empresa -->
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let almacen of almacenes; let i = index">
+
+        <td>{{almacen.name}}</td>
+        <td>{{almacen.ubicacion}}</td>
+        <td>{{almacen.latitud | number: '1.0-3'}}</td> <!-- Redondear a 3 decimales -->
+        <td>{{almacen.longitud | number: '1.0-3'}}</td> <!-- Redondear a 3 decimales -->
+        <td>{{almacen.departamento}}</td>
+        <td>{{almacen.empresa?.name}}</td> <!-- Mostrar nombre de la empresa -->
+
+        <td>
+          <button (click)="updateAlm(almacen)" class="btn edit-button">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button (click)="deleteAlm(almacen)" class="btn delete-button">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="almacenSelected.id" class="edit-form">
+    <h2>Editar Almacen</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="addAlmacen()">
+      <div>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" formControlName="name" required>
+      </div>
+      <div>
+        <label for="description">Ubicacion:</label>
+        <input type="text" id="description" formControlName="ubicacion" required>
+      </div>
+
+      <div class="dep1">
+        <label>Departamento:</label>
+        <select class="departamento" formControlName="departamento" (change)="onDepartamentoChange($event)">
+          <option value="" disabled>Selecciona un departamento</option>
+          <option *ngFor="let departamento of departamentos" [value]="departamento.name">{{ departamento.name }}</option>
+        </select>
+      </div>
+
+      <div class="mapa">
+        <app-map
+          [center]="[registerForm.get('latitud')?.value || -16.5000, registerForm.get('longitud')?.value || -68.1193]"
+          (locationSelected)="onLocationSelected($event)">
+        </app-map>
+      </div>
+
+      <br>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-save">Guardar</button>
+        <button type="button" class="btn btn-cancel" (click)="resetAlmacenSelection()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

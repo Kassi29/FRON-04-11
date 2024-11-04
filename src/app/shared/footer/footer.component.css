@@ -1,0 +1,66 @@
+footer {
+    background-color: #053c73;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 2rem 0;
+    position: relative;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+    font-size: medium;
+}
+
+.pie-pagina .grupo-1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.pie-pagina .box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+}
+
+.pie-pagina .box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.pie-pagina .grupo-1 .box h2 {
+    color: #ffffff;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.pie-pagina .grupo-1 .box p {
+    font-size: 0.95em;
+    color: #e2e8f0;
+    line-height: 1.5;
+}
+
+.pie-pagina .grupo-1 .icono2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.pie-pagina .grupo-1 .icono2 i {
+    font-size: 48px;
+    color: #ffffff;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.pie-pagina .grupo-1 .box:hover .icono2 i {
+    color: #ffc107;
+}

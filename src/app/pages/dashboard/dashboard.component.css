@@ -1,0 +1,77 @@
+/* Estilos globales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #cb1616;
+}
+
+/* Estilo para el encabezado */
+.encabezado {
+  margin-top: 2px;
+  background: linear-gradient(135deg, #0a4b8b, #0a8b8c); /* Degradado de color */
+  color: white;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  font-family:'Times New Roman', Times, serif; /* Fuente */
+}
+
+.encabezado h1 {
+  margin: 0;
+  font-size: 2.5em;
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+}
+
+.encabezado p {
+  font-size: 1.2em;
+  margin: 10px 0; /* Margen ajustado para mejor espaciado */
+  line-height: 1.4; /* Mejor separación entre líneas */
+}
+
+/* Estilos para la sección intro */
+.intro {
+  display: flex; 
+  gap: 10px; 
+  align-items: flex-start; 
+  margin: 10px; 
+}
+
+.imagenes {
+  flex: 1; 
+  max-width: 65%; 
+}
+
+.texto {
+  flex: 1; 
+  max-width: 35%; 
+  color: #555;
+  line-height: 1.6;
+  margin-top: 60px;
+}
+
+.texto h2 {
+  text-align: center;
+  color: #333;
+  font-size: 2em;
+  margin-top: 10px;
+}
+
+.texto p {
+  text-align: justify;
+  font-size: 1.1em;
+  margin: 20px 0;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .intro {
+    flex-direction: column; /* Cambia a columna en pantallas más pequeñas */
+  }
+
+  .imagenes,
+  .texto {
+    max-width: 100%; /* Ocupa el 100% del ancho en pantallas pequeñas */
+  }
+}

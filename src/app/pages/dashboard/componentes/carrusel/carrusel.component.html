@@ -1,0 +1,7 @@
+<div class="carousel">
+  <div class="slides" [ngStyle]="{'transform': 'translateX(-' + (currentIndex * 100) + '%)'}">
+    <div class="slide" *ngFor="let image of images">
+      <img [src]="image.src" [alt]="image.alt ? image.alt : 'Imagen del carrusel'">
+    </div>
+  </div>
+</div>

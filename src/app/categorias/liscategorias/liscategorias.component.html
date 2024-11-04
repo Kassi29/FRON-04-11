@@ -1,0 +1,48 @@
+<div class="container">
+  <h2>Lista De Categorías</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let category of categorias; let i = index">
+        <td>{{ category.id }}</td>
+        <td>{{ category.name }}</td>
+        <td>{{ category.description }}</td>
+        <td>
+          <button (click)="updateCat(category)" class="btn edit-button" title="Editar">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button (click)="deleteCat(category)" class="btn delete-button" title="Eliminar">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="edit-form" *ngIf="categorySelected.id">
+    <h2>Editar Categoría</h2>
+    <form (ngSubmit)="addCategory(categorySelected)" #categoryForm="ngForm">
+      <div>
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" [(ngModel)]="categorySelected.name" name="name" required>
+      </div>
+      <div>
+        <label for="description">Descripción:</label>
+        <input type="text" id="description" [(ngModel)]="categorySelected.description" name="description" required>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-save" [disabled]="!categoryForm.valid">Guardar</button>
+        <button type="button"  class="btn btn-cancel" (click)="resetCategorySelection()">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

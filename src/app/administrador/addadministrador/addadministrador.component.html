@@ -1,0 +1,63 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h2>Agregar Administrador</h2>
+  
+    <!-- Nombres -->
+    <div class="form-group">
+      <input formControlName="name" type="text" placeholder="Nombres" required>
+      <div *ngIf="registerForm.get('name')?.invalid && (registerForm.get('name')?.dirty || registerForm.get('name')?.touched)" class="text-danger">
+        <div *ngIf="registerForm.get('name')?.errors?.['required']">
+          Para proceder con el registro, es necesario proporcionar el nombre.
+        </div>
+      </div>
+    </div>
+  
+    <!-- Apellidos -->
+    <div class="form-group">
+      <input formControlName="lastname" type="text" placeholder="Apellidos" required>
+      <div *ngIf="registerForm.get('lastname')?.invalid && (registerForm.get('lastname')?.dirty || registerForm.get('lastname')?.touched)" class="text-danger">
+        <div *ngIf="registerForm.get('lastname')?.errors?.['required']">
+          Para proceder con el registro, es necesario proporcionar el apellido.
+        </div>
+      </div>
+    </div>
+  
+    <!-- Correo -->
+    <div class="form-group">
+      <input formControlName="email" type="email" placeholder="Correo" required>
+      <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)" class="text-danger">
+        <div *ngIf="registerForm.get('email')?.errors?.['required']">
+          El email es requerido.
+        </div>
+        <div *ngIf="registerForm.get('email')?.errors?.['email']">
+          El email debe tener un formato válido.
+        </div>
+      </div>
+    </div>
+  
+    <!-- Contraseña -->
+  <div class="form-group">
+    <div class="password-container">
+      <input [type]="passwordVisible ? 'text' : 'password'" formControlName="password" placeholder="Contraseña" required>
+      <button type="button" (click)="togglePasswordVisibility()" class="eye-button">
+        <i [ngClass]="passwordVisible ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+      </button>
+    </div>
+    <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)" class="text-danger">
+      <div *ngIf="registerForm.get('password')?.errors?.['required']">
+        La contraseña es requerida y no puede estar vacía.
+      </div>
+      <div *ngIf="registerForm.get('password')?.errors?.['minlength']">
+        La contraseña debe tener al menos 8 caracteres.
+      </div>
+      <div *ngIf="registerForm.get('password')?.errors?.['passwordStrength']">
+        La contraseña debe contener al menos una letra mayúscula y un carácter especial.
+      </div>
+    </div>
+  </div>
+  
+    <!-- Botón de Enviar -->
+    <div class="form-group">
+      <button type="submit" class="btn">Registrar</button>
+    </div>
+  </form>
+  
